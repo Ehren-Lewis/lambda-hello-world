@@ -1,0 +1,45 @@
+# Welcome to serverless. Read the docs
+# https://serverless.com/framework/docs/
+
+# Serverless.yml is the configuration the CLI
+# uses to deploy your code to your provider of choice
+
+# The `service` block is the name of the service
+service: ImageUploaderService
+
+# frameworkVersion: '3'
+
+custom:
+  bucket: getting-started-lambda-example-for-me
+
+# The `provider` block defines where your service will be deployed
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-1
+  stackName: imageUploader
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "s3:PutObject"
+      Resource:
+        - "arn:aws:s3:::${self:custom.bucket}/*" 
+
+
+# The `functions` block defines what code to deploy
+functions:
+  UploadImage:
+    handler: uploadImage.handler
+    events:
+      - http:
+        path: upload
+        method: post
+        cors: true
+    environment:
+      Bucket: ${self.custom.bucket}
+resources:
+  Resources:
+    StorageBucket:
+      Type: "AWS::S3::Bucket"
+      Properties:
+        BucketName: ${self:custom.bucket}

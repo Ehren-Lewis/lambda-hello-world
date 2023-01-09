@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "jimp": "^0.16.2",
+    "uuid": "^9.0.0"
+  },
+  "name": "lambda",
+  "version": "1.0.0",
+  "description": "A basic lambda example",
+  "main": "uploadImage.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ehren-Lewis/lambda-hello-world.git"
+  },
+  "keywords": [
+    "Lambda",
+    "AWS",
+    "Nodejs",
+    "JavaScript"
+  ],
+  "author": "Ehren Lewis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ehren-Lewis/lambda-hello-world/issues"
+  },
+  "homepage": "https://github.com/Ehren-Lewis/lambda-hello-world#readme"
+}
